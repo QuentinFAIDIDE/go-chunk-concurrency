@@ -8,10 +8,16 @@ and recreating one goroutine per item.
 
 ## Typical use case
 ```go
+package main
+
+import (
+    "github.com/QuentinFAIDIDE/go-chunk-concurrency/gochunks"
+)
+
 numbersToHalves := []int{4, 10, 30, 200, 3090}
 halvedNumbers := make([]int, 5)
 
-concurrentIdsChunks := MakeConcurrencyChunks(5, 2)
+concurrentIdsChunks := gochunks.MakeConcurrencyChunks(5, 2)
 
 // iterate over chunks with their own waitgroup synchronously
 for _, cChunk := range concurrentIdsChunks {
