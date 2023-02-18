@@ -1,6 +1,12 @@
 # Go Chunk Concurrency Utils
-A tiny package to break down a slice into index chunks to help implementing
+A go package to break down a slice into chunk of indexes to help implementing
 chunk based concurrency.
+
+Chunk based concurreny may be less verbose than the usual channel/worker concurrency pattern,
+albeit having the disadvantage of synchronuously waiting for every batch/chunk to complete,
+and recreating one goroutine per item.
+
+You might need to use your own locks and 
 
 ## Typical use case
 ```go
