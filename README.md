@@ -6,8 +6,6 @@ Chunk based concurreny may be less verbose than the usual channel/worker concurr
 albeit having the disadvantage of synchronuously waiting for every batch/chunk to complete,
 and recreating one goroutine per item.
 
-You might need to use your own locks and 
-
 ## Typical use case
 ```go
 numbersToHalves := []int{4, 10, 30, 200, 3090}
