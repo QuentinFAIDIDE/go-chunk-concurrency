@@ -1,8 +1,13 @@
 package gochunks
 
 // MakeConcurrencyChunks will return chunks of ids. The basic use case
-// is to fill in a list concurrently in a clear and concise way.
+// is to fill in a list concurrently in a concise way.
+// Indexes will go (no pun intended) from 0 to maxLength-1 and be broken
+// down between chunks of concurrency or less size.
 func MakeConcurrencyChunks(maxLength int, concurrency int) [][]int {
+	if concurrency <= 0 || maxLength <= 0 {
+		panic("cannot use null maxLength or concurrency parameters")
+	}
 	var chunks [][]int
 	if maxLength >= concurrency {
 		chunks = makeChunks(makeRange(0, maxLength-1), concurrency)
